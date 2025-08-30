@@ -3,25 +3,43 @@ package main
 import "fmt"
 
 func start() (string, string) {
+
 	var (
 		Player1 string
 		Player2 string
 	)
+
 	fmt.Println("Insert your names")
 	fmt.Scanf("%s\n", &Player1)
 	fmt.Scanf("%s\n", &Player2)
 	fmt.Println("All right,", Player1, "and", Player2)
+
 	return Player1, Player2
 }
 
 func game(chel1 string, chel2 string) {
+
 	var object1 string
 	var object2 string
+
 	fmt.Println("You can write: stone, paper or scissors")
 	fmt.Println(chel1, "Throw")
-	fmt.Scanf("%s\n", &object1)
+
+	for {
+		fmt.Scanf("%s\n", &object1)
+		if object1 == "stone" || object1 == "paper" || object1 == "scissors" {
+			break
+		}
+	}
+
 	fmt.Println(chel2, "Throw")
-	fmt.Scanf("%s\n", &object2)
+
+	for {
+		fmt.Scanf("%s\n", &object2)
+		if object2 == "stone" || object2 == "paper" || object2 == "scissors" {
+			break
+		}
+	}
 
 	if (object1 == "stone" && object2 == "scissors") || (object1 == "paper" && object2 == "stone") || (object1 == "scissors" && object2 == "paper") {
 		fmt.Println(chel1, ",wins.")
@@ -33,6 +51,8 @@ func game(chel1 string, chel2 string) {
 }
 
 func main() {
+
 	name1, name2 := start() // Оставляем, чтобы начислять победы по именам
+
 	game(name1, name2)
 }
